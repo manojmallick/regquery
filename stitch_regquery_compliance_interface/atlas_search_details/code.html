@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-dot {
+            box-shadow: 0 0 8px #00ED64;
+        }
+        .glass-card {
+            background: rgba(19, 31, 53, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1322;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3050;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4b3b;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#2f3445",
+                    "on-tertiary-container": "#7a4e20",
+                    "inverse-on-surface": "#2a3040",
+                    "on-secondary-fixed-variant": "#004494",
+                    "on-primary-container": "#006626",
+                    "secondary-container": "#0162cf",
+                    "tertiary-fixed": "#ffdcbf",
+                    "surface-bright": "#33394a",
+                    "primary-container": "#00ed64",
+                    "surface": "#0d1322",
+                    "surface-container-low": "#151b2b",
+                    "on-error": "#690005",
+                    "surface-tint": "#00e560",
+                    "primary-fixed": "#69ff87",
+                    "on-primary": "#003912",
+                    "on-primary-fixed-variant": "#00531e",
+                    "on-secondary-container": "#dae4ff",
+                    "outline": "#849582",
+                    "tertiary-fixed-dim": "#f7bb83",
+                    "on-primary-fixed": "#002108",
+                    "on-surface": "#dde2f8",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "outline-variant": "#3b4b3b",
+                    "secondary": "#adc6ff",
+                    "surface-container-lowest": "#080e1d",
+                    "on-secondary": "#002e69",
+                    "on-background": "#dde2f8",
+                    "on-secondary-fixed": "#001a41",
+                    "tertiary-container": "#ffc28a",
+                    "inverse-primary": "#006e2a",
+                    "on-tertiary-fixed": "#2d1600",
+                    "on-tertiary": "#4b2800",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#663d11",
+                    "primary": "#a2ffaa",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#242a3a",
+                    "inverse-surface": "#dde2f8",
+                    "primary-fixed-dim": "#00e560",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-container": "#191f2f",
+                    "surface-container-highest": "#2f3445",
+                    "on-surface-variant": "#bacbb7",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0d1322",
+                    "tertiary": "#ffe6d2",
+                    "surface-dim": "#0d1322"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "base": "8px",
+                    "grid-margin": "24px",
+                    "container-max-width": "1440px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code-sm": ["JetBrains Mono"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code-sm": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-margin h-16 border-b border-outline-variant bg-surface">
+<div class="flex items-center gap-8">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                RegQuery
+            </div>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all duration-200 ease-in-out px-2 py-1" href="#">Jurisdictions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all duration-200 ease-in-out px-2 py-1" href="#">Alerts</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary transition-all duration-200 ease-in-out px-2 py-1" href="#">History</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200"><span class="material-symbols-outlined">notifications</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200"><span class="material-symbols-outlined">settings</span></button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="User compliance profile" data-alt="A professional headshot of a compliance officer in a modern tech-focused legal environment. The lighting is crisp and cool, featuring soft blue and green accents that reflect the high-stakes regulatory intelligence brand. The background is a blurred high-tech command center, maintaining a clean, SaaS-elite corporate aesthetic with professional authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn0TDzZ1vGHUjgTaTj0vIsdOBWUp21Orby973Eno-sEm9QjryABwXuYGeOZe7sSqkgpSQsRbOIoZNEQ0sl2jZs658LM6aMOtOdo-uSGbIXcTSEvZgViDA-au0-b0SrGM60p5zhiNi6T0_VKX4LAATL7HFYcmW37ATZEXfUTSLxKcx3jNbAotteyDtx1fCv0U2OF48RG_7Ca1sXqtYrZ-tjzcPPuSmnP6zPEANcISYJrK5Y5r_qBpr7NQ5xWmnd2kNP484O0wh49w"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col py-6 px-4 bg-surface-container border-r border-outline-variant w-[280px] hidden md:flex">
+<div class="mt-16 mb-8 px-2">
+<h1 class="font-title-lg text-title-lg font-bold text-primary">RegQuery Pro</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-70">EU Intelligence</p>
+</div>
+<button class="mb-6 w-full py-3 bg-primary-container text-on-primary-container font-bold rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-transform active:scale-95">
+<span class="material-symbols-outlined">add</span>
+            New Analysis
+        </button>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-transform scale-98" href="#">
+<span class="material-symbols-outlined">gavel</span>
+                Intelligence
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-lg transition-transform active:opacity-80" href="#">
+<span class="material-symbols-outlined">search_insights</span>
+                Research
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-lg transition-transform active:opacity-80" href="#">
+<span class="material-symbols-outlined">visibility</span>
+                Watchlist
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-lg transition-transform active:opacity-80" href="#">
+<span class="material-symbols-outlined">description</span>
+                Drafting
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface rounded-lg transition-transform active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto space-y-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface text-sm" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+                Help
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface text-sm" href="#">
+<span class="material-symbols-outlined text-sm">sensors</span>
+                Status
+            </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-[280px] pt-24 px-grid-margin pb-12 min-h-screen max-w-container-max-width mx-auto">
+<!-- Hero Header -->
+<div class="mb-12">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-sm">database</span>
+                MONGODB ATLAS VECTOR SEARCH
+            </div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-4">How RegQuery Found Your Answer</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                A technical deep-dive into the semantic retrieval pipeline powering our regulatory intelligence engine.
+            </p>
+</div>
+<!-- Metrics Bento Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="md:col-span-1 bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">TOTAL LATENCY</span>
+<div>
+<span class="font-display-lg text-display-lg text-primary">7.54s</span>
+<div class="w-full bg-surface-variant h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<div class="md:col-span-1 bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">VECTOR SEARCH</span>
+<div>
+<span class="font-display-lg text-display-lg text-secondary">340ms</span>
+<div class="w-full bg-surface-variant h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 4.5%;"></div>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">GEMINI PRO REASONING</span>
+<div class="flex justify-between items-end">
+<span class="font-display-lg text-display-lg text-on-surface">7.2s</span>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-primary glow-dot"></div>
+<span class="font-label-md text-label-md text-primary">LIVE PROCESSING</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-on-surface h-full" style="width: 95.5%;"></div>
+</div>
+</div>
+</div>
+<!-- Visual Flow Diagram -->
+<section class="bg-surface-container border border-outline-variant rounded-xl p-8 mb-12 overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">account_tree</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+                Pipeline Architecture
+            </h2>
+<div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-4 text-center z-10 w-full lg:w-48">
+<div class="w-16 h-16 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">question_mark</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface mb-1">USER QUESTION</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant italic">"What are the reporting deadlines for MiCA..."</div>
+</div>
+</div>
+<div class="hidden lg:block h-px flex-1 bg-outline-variant relative">
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-4 text-center z-10 w-full lg:w-48">
+<div class="w-16 h-16 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface mb-1">VERTEX AI</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Generating Embeddings</div>
+</div>
+</div>
+<div class="hidden lg:block h-px flex-1 bg-outline-variant relative">
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-4 text-center z-10 w-full lg:w-48">
+<div class="px-4 py-2 rounded bg-surface-container-high border border-outline-variant text-on-surface-variant font-code-sm text-code-sm">
+                        [0.12, -0.44, ... 768]
+                    </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface mb-1">768-DIM VECTOR</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Semantic Representation</div>
+</div>
+</div>
+<div class="hidden lg:block h-px flex-1 bg-outline-variant relative">
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-4 text-center z-10 w-full lg:w-48">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface mb-1">ATLAS VECTORSEARCH</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">k-Nearest Neighbors (kNN)</div>
+</div>
+</div>
+<div class="hidden lg:block h-px flex-1 bg-outline-variant relative">
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center gap-4 text-center z-10 w-full lg:w-48">
+<div class="w-16 h-16 rounded-full bg-surface-variant border border-primary flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">list_alt</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface mb-1">5 RANKED RESULTS</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Top-k Relevant Chunks</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Table: Results -->
+<div class="bg-surface-container border border-outline-variant rounded-xl flex flex-col h-full">
+<div class="p-6 border-b border-outline-variant">
+<h3 class="font-title-lg text-title-lg text-on-surface">Top Vector Matches</h3>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Rank</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Regulation / Article</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 font-bold text-primary">#1</td>
+<td class="p-4">
+<div class="text-on-surface font-semibold">Article 12: Reporting</div>
+<div class="text-on-surface-variant text-xs">EU Reg 2023/1114 (MiCA)</div>
+<div class="w-24 h-1 bg-surface-variant rounded-full mt-2">
+<div class="bg-primary h-full rounded-full" style="width: 94%;"></div>
+</div>
+</td>
+<td class="p-4 text-right font-code-sm text-primary">0.94</td>
+</tr>
+<tr class="bg-surface-container-lowest/20 hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 font-bold text-on-surface">#2</td>
+<td class="p-4">
+<div class="text-on-surface font-semibold">Article 15: Compliance</div>
+<div class="text-on-surface-variant text-xs">EU Reg 2023/1114 (MiCA)</div>
+<div class="w-24 h-1 bg-surface-variant rounded-full mt-2">
+<div class="bg-primary h-full rounded-full" style="width: 87%;"></div>
+</div>
+</td>
+<td class="p-4 text-right font-code-sm text-on-surface-variant">0.87</td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 font-bold text-on-surface">#3</td>
+<td class="p-4">
+<div class="text-on-surface font-semibold">Recital 44: CASPs</div>
+<div class="text-on-surface-variant text-xs">Digital Finance Framework</div>
+<div class="w-24 h-1 bg-surface-variant rounded-full mt-2">
+<div class="bg-secondary h-full rounded-full" style="width: 82%;"></div>
+</div>
+</td>
+<td class="p-4 text-right font-code-sm text-on-surface-variant">0.82</td>
+</tr>
+<tr class="bg-surface-container-lowest/20 hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 font-bold text-on-surface">#4</td>
+<td class="p-4">
+<div class="text-on-surface font-semibold">Annex II: Disclosure</div>
+<div class="text-on-surface-variant text-xs">EU Reg 2023/1114 (MiCA)</div>
+<div class="w-24 h-1 bg-surface-variant rounded-full mt-2">
+<div class="bg-secondary h-full rounded-full" style="width: 79%;"></div>
+</div>
+</td>
+<td class="p-4 text-right font-code-sm text-on-surface-variant">0.79</td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 font-bold text-on-surface">#5</td>
+<td class="p-4">
+<div class="text-on-surface font-semibold">Article 4: Definitions</div>
+<div class="text-on-surface-variant text-xs">General Provisions</div>
+<div class="w-24 h-1 bg-surface-variant rounded-full mt-2">
+<div class="bg-secondary h-full rounded-full" style="width: 75%;"></div>
+</div>
+</td>
+<td class="p-4 text-right font-code-sm text-on-surface-variant">0.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Code Block: Pipeline -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col h-full overflow-hidden shadow-2xl">
+<div class="bg-surface-container px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</div>
+<span class="ml-2 font-label-md text-label-md text-on-surface-variant">mongodb_aggregation.json</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<div class="p-6 font-code-sm text-code-sm leading-relaxed overflow-auto">
+<pre class="text-on-surface-variant"><span class="text-secondary">[</span>
+  <span class="text-primary">{</span>
+    <span class="text-tertiary">"$vectorSearch"</span>: <span class="text-primary">{</span>
+      <span class="text-tertiary">"index"</span>: <span class="text-on-surface">"compliance_vector_index"</span>,
+      <span class="text-tertiary">"path"</span>: <span class="text-on-surface">"embedding"</span>,
+      <span class="text-tertiary">"queryVector"</span>: <span class="text-on-surface">[0.123, -0.456, ...]</span>,
+      <span class="text-tertiary">"numCandidates"</span>: <span class="text-secondary">100</span>,
+      <span class="text-tertiary">"limit"</span>: <span class="text-secondary">5</span>
+    <span class="text-primary">}</span>
+  <span class="text-primary">}</span>,
+  <span class="text-primary">{</span>
+    <span class="text-tertiary">"$project"</span>: <span class="text-primary">{</span>
+      <span class="text-tertiary">"regulation_id"</span>: <span class="text-secondary">1</span>,
+      <span class="text-tertiary">"article_text"</span>: <span class="text-secondary">1</span>,
+      <span class="text-tertiary">"score"</span>: <span class="text-primary">{</span> <span class="text-tertiary">"$meta"</span>: <span class="text-on-surface">"vectorSearchScore"</span> <span class="text-primary">}</span>
+    <span class="text-primary">}</span>
+  <span class="text-primary">}</span>
+<span class="text-secondary">]</span></pre>
+</div>
+<div class="mt-auto bg-surface-container-high/50 p-4 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div class="text-xs">
+<div class="text-on-surface font-bold">Optimization Note</div>
+<div class="text-on-surface-variant">Index utilizes HNSW algorithm for sub-second recall.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-grid-margin border-t border-outline-variant bg-surface-container-lowest">
+<div class="max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<div class="font-label-md text-label-md font-bold text-on-surface-variant">RegQuery</div>
+<div class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest mt-1">v2.4.0 Engine</div>
+</div>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<img alt="MongoDB Atlas Logo" class="h-6 opacity-80 hover:opacity-100 transition-opacity" data-alt="The official MongoDB Atlas logo with its distinctive green leaf and bold typography, presented in a crisp, high-resolution format suitable for a premium technical interface. The style is clean and modern, integrated into a dark-themed corporate footer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNuqzCGlA_Y3DBphwbYt4Rsc6ASJDlL6xjo4E-RzNgwWJnnJVbKbN-Uu7y_r5MmPxY_nsnZEZ7yQxlXX15U3gG17vV_y_POHFoqBPgSLafBC6FHBTNk-fseDOnzy19BoixMUcCrYqzRFD36UdKgy66Ys5E4yl3VWJQcwXA1IrEcF1pMpmJHmevq_2WszE_sivty4jbizcHFwo3T0wD115jvkDipINf5WJcgNT_bbQ9ijSj76pizVCcPbAaHRMooTqKo2fLf7v8JA"/>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Powered by Atlas Vector Search</span>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance API</a>
+</nav>
+<div class="text-on-surface-variant font-body-sm text-body-sm opacity-50">
+                    © 2024 RegQuery.
+                </div>
+</div>
+</div>
+</footer>
+<!-- Atmosphere/Interaction Script -->
+<script>
+        // Simple hover effect for table rows to simulate focus
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+                row.style.transition = 'transform 0.2s ease-out';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Atmospheric glowing effect for the diagram nodes
+        const nodes = document.querySelectorAll('.pipeline-node');
+        nodes.forEach(node => {
+            setInterval(() => {
+                node.classList.toggle('ring-2');
+                node.classList.toggle('ring-primary/20');
+            }, 2000 + Math.random() * 1000);
+        });
+    </script>
+</body></html>

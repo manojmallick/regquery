@@ -1,0 +1,9 @@
+node_modules/
+.env
+data/*.txt
+*.log
+.DS_Store
+
+# Private — never publish: personal strategy docs (all 6 tracks) + local tool config
+.personal/
+.claude/

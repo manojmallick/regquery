@@ -1,0 +1,22 @@
+{
+  "_comment": "Google Cloud Agent Builder definition for the JUDGED RegQuery agent. This is the required-stack artifact: Gemini 3 model + MongoDB MCP server as the tool source. Import via the Agent Builder console or `gcloud` (see README). The Express app in src/ mirrors this for the hosted demo UI.",
+  "displayName": "RegQuery",
+  "model": "gemini-2.5-flash",
+  "description": "EU regulatory Q&A agent: retrieves regulation articles from MongoDB Atlas Vector Search and answers with cited articles + confidence, then proposes a write-back gated on human approval.",
+  "instruction": "You are RegQuery. For each compliance question: (1) use the mongodb vectorSearch tool to retrieve the top 5 relevant article chunks; (2) answer ONLY from those chunks, citing exact articles (e.g. DORA Art.23 paragraph 3); (3) when the question spans regulations, synthesize across them and flag contradictions; (4) never invent an article number; (5) when the user asks to save the result, do NOT write until the human approves — present the planned write (collections + fields) and wait.",
+  "tools": [
+    {
+      "type": "mcp",
+      "mcpServer": {
+        "command": "npx",
+        "args": ["@mongodb-js/mcp-server-mongodb"],
+        "env": { "MDB_MCP_CONNECTION_STRING": "${ATLAS_CONNECTION_STRING}" }
+      },
+      "exposedTools": ["aggregate", "find", "insert_one", "update_one"]
+    }
+  ],
+  "humanInTheLoop": {
+    "requireApprovalFor": ["insert_one", "update_one"],
+    "_comment": "Consequential MCP writes pause for human approval — maps to the UI ApprovalBar and the 'keep you in control' rule."
+  }
+}

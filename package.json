@@ -1,0 +1,19 @@
+{
+  "name": "regquery",
+  "version": "1.0.0",
+  "description": "RegQuery — EU regulatory Q&A agent. Gemini 3 + Google Cloud Agent Builder + MongoDB Atlas Vector Search (MCP).",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "ingest": "node scripts/ingest.js",
+    "eval": "node scripts/eval.js"
+  },
+  "dependencies": {
+    "@google/genai": "^0.3.0",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0"
+  }
+}

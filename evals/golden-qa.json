@@ -1,0 +1,45 @@
+{
+  "description": "Golden Q&A set for RegQuery. Scored on article recall, keyword presence, abstention correctness, and point-in-time. Cases tagged mock_supported run under MOCK=true; the full set requires live Vertex + Atlas. Verify article numbers vs the final DORA RTS.",
+  "cases": [
+    {
+      "question": "What is the DORA major-incident reporting timeline and threshold?",
+      "expect_articles": ["DORA Art.19", "DORA Art.18"],
+      "expect_keywords": ["4 hours", "72 hours", "1 month"],
+      "expect_abstain": false,
+      "mock_supported": true
+    },
+    {
+      "question": "What was the DORA major-incident threshold and timeline?",
+      "asOf": "2026-03-01",
+      "expect_articles": ["DORA Art.19"],
+      "expect_keywords": ["10%", "4 hours"],
+      "expect_abstain": false,
+      "mock_supported": true
+    },
+    {
+      "question": "Under GDPR, what is the personal-data breach notification deadline to the supervisory authority?",
+      "expect_articles": ["GDPR Art.33"],
+      "expect_keywords": ["72 hours"],
+      "expect_abstain": false
+    },
+    {
+      "question": "Does DORA require an ICT third-party risk register, and which article?",
+      "expect_articles": ["DORA Art.28"],
+      "expect_keywords": ["third-party"],
+      "expect_abstain": false
+    },
+    {
+      "question": "What is the NIS2 incident notification timeline for essential entities?",
+      "expect_articles": ["NIS2 Art.23"],
+      "expect_keywords": ["24 hours", "72 hours"],
+      "expect_abstain": false
+    },
+    {
+      "question": "What is the maximum carbon tax rate for almond farming on Mars in 2031?",
+      "expect_articles": [],
+      "expect_keywords": [],
+      "expect_abstain": true,
+      "mock_supported": true
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RegQuery | EU Regulatory Intelligence Q&amp;A</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .bg-mesh-gradient {
+            background-color: #0b1120;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 237, 100, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(66, 133, 244, 0.05) 0px, transparent 50%);
+        }
+        .glass-panel {
+            background: rgba(19, 31, 53, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #1e3050;
+        }
+        .glow-dot {
+            box-shadow: 0 0 8px #00ed64;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2f3445",
+                        "on-tertiary-container": "#7a4e20",
+                        "inverse-on-surface": "#2a3040",
+                        "on-secondary-fixed-variant": "#004494",
+                        "on-primary-container": "#006626",
+                        "secondary-container": "#0162cf",
+                        "tertiary-fixed": "#ffdcbf",
+                        "surface-bright": "#33394a",
+                        "primary-container": "#00ed64",
+                        "surface": "#0d1322",
+                        "surface-container-low": "#151b2b",
+                        "on-error": "#690005",
+                        "surface-tint": "#00e560",
+                        "primary-fixed": "#69ff87",
+                        "on-primary": "#003912",
+                        "on-primary-fixed-variant": "#00531e",
+                        "on-secondary-container": "#dae4ff",
+                        "outline": "#849582",
+                        "tertiary-fixed-dim": "#f7bb83",
+                        "on-primary-fixed": "#002108",
+                        "on-surface": "#dde2f8",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "outline-variant": "#3b4b3b",
+                        "secondary": "#adc6ff",
+                        "surface-container-lowest": "#080e1d",
+                        "on-secondary": "#002e69",
+                        "on-background": "#dde2f8",
+                        "on-secondary-fixed": "#001a41",
+                        "tertiary-container": "#ffc28a",
+                        "inverse-primary": "#006e2a",
+                        "on-tertiary-fixed": "#2d1600",
+                        "on-tertiary": "#4b2800",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#663d11",
+                        "primary": "#a2ffaa",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#242a3a",
+                        "inverse-surface": "#dde2f8",
+                        "primary-fixed-dim": "#00e560",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-container": "#191f2f",
+                        "surface-container-highest": "#2f3445",
+                        "on-surface-variant": "#bacbb7",
+                        "on-error-container": "#ffdad6",
+                        "background": "#0d1322",
+                        "tertiary": "#ffe6d2",
+                        "surface-dim": "#0d1322"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "base": "8px",
+                        "grid-margin": "24px",
+                        "container-max-width": "1440px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code-sm": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md bg-mesh-gradient min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-margin h-16 border-b border-outline-variant bg-surface">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 font-headline-md text-headline-md font-bold text-primary">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">find_in_page</span>
+                RegQuery
+            </div>
+<div class="hidden md:flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant leading-none">EU Regulatory Intelligence</span>
+<span class="font-body-sm text-[10px] text-primary/70">Powered by Atlas Vector Search</span>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-2">
+<div class="px-3 py-1 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md text-label-md">DORA</div>
+<div class="px-3 py-1 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md text-label-md">NIS2</div>
+<div class="px-3 py-1 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md text-label-md">GDPR</div>
+<div class="px-3 py-1 rounded-full border border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md text-label-md">EU AI Act</div>
+<div class="ml-4 flex items-center gap-2 px-3 py-1 rounded-lg bg-on-primary-container/20 border border-primary-container/30">
+<span class="w-2 h-2 rounded-full bg-primary-container glow-dot"></span>
+<span class="text-primary-container font-label-md text-label-md">3,247 articles indexed</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="A professional headshot of a compliance officer in a modern dark office setting, soft dramatic lighting from a computer screen, high-end corporate aesthetic with deep blues and emerald green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnNQFvPoVLsaAXCPbPQ1GWhkjbAsdA3wRlewlorSKTkyqdriUKgGOGGTO6gIfjoIdAEQENdR1_g8ZQjBDwyqFckyn8LO1rLom0DvBvQR7jwEpPqPb6NiILXx6XRSSHOnzbZv7k7rocSD5HfBOy9bYjHIm2FRXw8AM-ywb0qnHx0KfTSofFc81agA8VdfWBCNEMCXBM2-tB1qcUboYqmsHH1WCn_vVNysAmqxvGPONUiLmAKE5EtR0WRTT_9MTYG3y9AfyqJ55HMw"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Suppressed on focused Q&A flow as per relevance check, but keeping skeleton for structural compliance) -->
+<aside class="hidden md:flex fixed left-0 top-16 bottom-0 w-[80px] flex-col py-6 items-center border-r border-outline-variant bg-surface-container-low z-40">
+<nav class="flex flex-col gap-8">
+<div class="p-3 rounded-lg bg-primary-container text-on-primary-container font-bold transition-all"><span class="material-symbols-outlined">gavel</span></div>
+<div class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all cursor-pointer"><span class="material-symbols-outlined">search_insights</span></div>
+<div class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all cursor-pointer"><span class="material-symbols-outlined">visibility</span></div>
+<div class="p-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all cursor-pointer"><span class="material-symbols-outlined">description</span></div>
+</nav>
+<div class="mt-auto flex flex-col gap-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">help</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">sensors</span>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pt-24 pb-32 px-grid-margin md:ml-[80px]">
+<div class="max-w-4xl mx-auto space-y-12">
+<!-- Search Section -->
+<section class="space-y-6">
+<div class="relative group">
+<div class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant group-focus-within:text-primary-container transition-colors">search</span>
+</div>
+<input class="w-full h-18 bg-surface-container-high border border-outline-variant rounded-xl pl-16 pr-6 text-on-surface font-body-lg focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all shadow-2xl" placeholder="Ask any compliance question..." type="text" value="What is the DORA major incident reporting timeline?"/>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md transition-transform active:scale-95">All</button>
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-primary transition-all">DORA</button>
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-primary transition-all">NIS2</button>
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-primary transition-all">GDPR</button>
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:border-primary transition-all">EU AI Act</button>
+</div>
+</section>
+<!-- Result Answer Card -->
+<section class="glass-panel rounded-xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="p-8 border-b border-outline-variant flex justify-between items-start">
+<div class="space-y-1">
+<span class="font-label-md text-label-md text-primary-container uppercase tracking-wider">Generated Intelligence</span>
+<h2 class="font-title-lg text-title-lg text-on-surface">What is the DORA major incident reporting timeline?</h2>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-primary">Confidence: 94%</span>
+</div>
+<div class="w-32 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[94%]"></div>
+</div>
+</div>
+</div>
+<div class="p-8 space-y-6">
+<p class="font-body-lg text-on-surface">
+                        Under <span class="text-primary-container font-bold border-b border-primary-container/30">DORA Article 23(3)</span>, financial entities are required to submit reports on major ICT-related incidents according to the following strict hierarchical timeline:
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary/50 transition-colors">
+<div class="font-label-md text-label-md text-on-surface-variant mb-2">Phase 1</div>
+<div class="font-headline-md text-headline-md text-primary">4h</div>
+<div class="font-body-sm text-body-sm text-on-surface mt-1">Initial Early Warning</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary/50 transition-colors">
+<div class="font-label-md text-label-md text-on-surface-variant mb-2">Phase 2</div>
+<div class="font-headline-md text-headline-md text-primary">72h</div>
+<div class="font-body-sm text-body-sm text-on-surface mt-1">Intermediate Report</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary/50 transition-colors">
+<div class="font-label-md text-label-md text-on-surface-variant mb-2">Phase 3</div>
+<div class="font-headline-md text-headline-md text-primary">1m</div>
+<div class="font-body-sm text-body-sm text-on-surface mt-1">Final Analysis Report</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/50">
+<div class="flex flex-wrap gap-2 items-center">
+<span class="font-label-md text-label-md text-on-surface-variant mr-2">Citations:</span>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded bg-on-primary-container/10 border border-primary-container/20 text-primary-container font-label-md text-label-md cursor-pointer hover:bg-on-primary-container/20">
+<span class="material-symbols-outlined text-[14px]">menu_book</span>
+                                DORA Art. 23.3
+                            </div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded bg-on-primary-container/10 border border-primary-container/20 text-primary-container font-label-md text-label-md cursor-pointer hover:bg-on-primary-container/20">
+<span class="material-symbols-outlined text-[14px]">link</span>
+                                RTS on Incident Classification
+                            </div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded bg-tertiary-container/10 border border-tertiary-container/20 text-tertiary font-label-md text-label-md cursor-pointer hover:bg-tertiary-container/20">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                                ESMA Guidance 2024
+                            </div>
+</div>
+</div>
+</div>
+<!-- Technical Traceability Section -->
+<details class="group bg-surface-container-lowest border-t border-outline-variant">
+<summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-surface-variant transition-colors list-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container group-open:rotate-180 transition-transform">database</span>
+<span class="font-label-md text-label-md text-on-surface-variant">How Atlas found this answer</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 space-y-4 font-code-sm text-code-sm border-t border-outline-variant/30">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<div class="text-on-surface-variant font-label-md">Vector Embedding Analysis</div>
+<div class="bg-surface p-3 rounded border border-outline-variant space-y-2">
+<div class="flex justify-between">
+<span>Similarity Score (Cosine)</span>
+<span class="text-primary">0.9842</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded">
+<div class="h-full bg-primary-container w-[98%]"></div>
+</div>
+<div class="flex justify-between">
+<span>Semantic Rerank Score</span>
+<span class="text-secondary">0.9610</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded">
+<div class="h-full bg-secondary w-[96%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="text-on-surface-variant font-label-md">Atlas Cluster Response</div>
+<div class="bg-surface p-3 rounded border border-outline-variant font-mono text-[11px] leading-relaxed text-on-surface-variant">
+                                    { "query": "dora_reporting_timeline", "top_k": 3, "index": "reg_idx_v2", "latency_ms": 142 }
+                                </div>
+</div>
+</div>
+</div>
+</details>
+</section>
+<!-- Footer / Related Questions -->
+<section class="space-y-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Related Compliance Intelligence</h3>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-4 py-3 rounded-xl border border-outline-variant bg-surface-container hover:bg-surface-variant hover:border-primary/50 transition-all text-left">
+<span class="material-symbols-outlined text-on-surface-variant">question_answer</span>
+<span class="font-body-sm text-body-sm text-on-surface">What constitutes a 'Major' incident under DORA?</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-3 rounded-xl border border-outline-variant bg-surface-container hover:bg-surface-variant hover:border-primary/50 transition-all text-left">
+<span class="material-symbols-outlined text-on-surface-variant">question_answer</span>
+<span class="font-body-sm text-body-sm text-on-surface">Compare NIS2 vs DORA reporting requirements</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-3 rounded-xl border border-outline-variant bg-surface-container hover:bg-surface-variant hover:border-primary/50 transition-all text-left">
+<span class="material-symbols-outlined text-on-surface-variant">question_answer</span>
+<span class="font-body-sm text-body-sm text-on-surface">Exemptions for micro-enterprises in Article 16</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="w-full py-8 border-t border-outline-variant bg-surface-container-lowest mt-12">
+<div class="max-w-container-max-width mx-auto px-grid-margin flex flex-col md:flex-row justify-between items-center">
+<div class="font-label-md text-label-md font-bold text-on-surface-variant mb-4 md:mb-0">
+                © 2024 RegQuery. Powered by MongoDB Atlas Vector Search.
+            </div>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance API</a>
+</div>
+</div>
+</footer>
+<!-- Interactive Logic -->
+<script>
+        // Simple search focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+
+        // Simulating the typewriter effect for the result text
+        window.addEventListener('DOMContentLoaded', () => {
+            const resultCard = document.querySelector('.animate-in');
+            resultCard.style.opacity = '0';
+            setTimeout(() => {
+                resultCard.style.opacity = '1';
+                resultCard.classList.add('animate-in');
+            }, 300);
+        });
+    </script>
+</body></html>

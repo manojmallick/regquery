@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .score-gradient {
+            background: conic-gradient(from 0deg, #00ED64 0%, #00ED64 67%, #1E3050 67%, #1E3050 100%);
+        }
+        .glow-dot {
+            box-shadow: 0 0 8px #00ED64;
+        }
+        .glass-panel {
+            background: rgba(19, 31, 53, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2f3445",
+                        "on-tertiary-container": "#7a4e20",
+                        "inverse-on-surface": "#2a3040",
+                        "on-secondary-fixed-variant": "#004494",
+                        "on-primary-container": "#006626",
+                        "secondary-container": "#0162cf",
+                        "tertiary-fixed": "#ffdcbf",
+                        "surface-bright": "#33394a",
+                        "primary-container": "#00ed64",
+                        "surface": "#0d1322",
+                        "surface-container-low": "#151b2b",
+                        "on-error": "#690005",
+                        "surface-tint": "#00e560",
+                        "primary-fixed": "#69ff87",
+                        "on-primary": "#003912",
+                        "on-primary-fixed-variant": "#00531e",
+                        "on-secondary-container": "#dae4ff",
+                        "outline": "#849582",
+                        "tertiary-fixed-dim": "#f7bb83",
+                        "on-primary-fixed": "#002108",
+                        "on-surface": "#dde2f8",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "outline-variant": "#3b4b3b",
+                        "secondary": "#adc6ff",
+                        "surface-container-lowest": "#080e1d",
+                        "on-secondary": "#002e69",
+                        "on-background": "#dde2f8",
+                        "on-secondary-fixed": "#001a41",
+                        "tertiary-container": "#ffc28a",
+                        "inverse-primary": "#006e2a",
+                        "on-tertiary-fixed": "#2d1600",
+                        "on-tertiary": "#4b2800",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#663d11",
+                        "primary": "#a2ffaa",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#242a3a",
+                        "inverse-surface": "#dde2f8",
+                        "primary-fixed-dim": "#00e560",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-container": "#191f2f",
+                        "surface-container-highest": "#2f3445",
+                        "on-surface-variant": "#bacbb7",
+                        "on-error-container": "#ffdad6",
+                        "background": "#0d1322",
+                        "tertiary": "#ffe6d2",
+                        "surface-dim": "#0d1322"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "base": "8px",
+                        "grid-margin": "24px",
+                        "container-max-width": "1440px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code-sm": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-grid-margin h-16 border-b border-outline-variant bg-surface">
+<div class="flex items-center gap-8">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+                RegQuery
+            </div>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all duration-200 ease-in-out px-3 py-2 rounded" href="#">Jurisdictions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all duration-200 ease-in-out px-3 py-2 rounded" href="#">Alerts</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all duration-200 ease-in-out px-3 py-2 rounded" href="#">History</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User compliance profile" data-alt="A professional headshot of a compliance officer in a modern corporate setting. The person has a focused and confident expression, wearing professional attire. The lighting is crisp and cool, reflecting a high-end SaaS platform aesthetic with deep blues and subtle emerald highlights in the blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAjbS8fwgG1k0e36IgiNve85DPcdXsJ7ZdkYbcDtLaOUrdj9hnZHM2LSjl1a4Bl-V-0Wm6767wflHIP3_Xllqr85fVGOtxrVGOzQN5kk2FrlOBBE4W8xiH7bus7fdGULEVEKG8NyVX5jLUM19WOvSMJxTUcYf8AmU8GxLmcuPUaneMZrX_zHP-wJHs-Qpf4UKgOVgxZ0o9x3fEfspSxRZSPPTmYTG8q90YKdCk9TRvoY4KcIObPISGwRa1zO-MHbDPzC-RuuY2OQ"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 hidden md:flex flex-col py-6 px-4 w-[280px] mt-16 border-r border-outline-variant bg-surface-container">
+<div class="mb-8">
+<h2 class="font-title-lg text-title-lg font-bold text-primary">RegQuery Pro</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">EU Intelligence</p>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 mb-8 scale-98 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Analysis
+        </button>
+<nav class="flex-grow flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md text-label-md">Intelligence</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="search_insight">search_insights</span>
+<span class="font-label-md text-label-md">Research</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="font-label-md text-label-md">Watchlist</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Drafting</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<div class="flex items-center gap-3 px-4 py-2">
+<span class="w-2 h-2 rounded-full bg-primary glow-dot"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">System: Live</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-[280px] mt-16 p-grid-margin max-w-container-max-width mx-auto">
+<!-- Header Section -->
+<section class="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<div class="lg:col-span-2">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 bg-surface-container-high border border-outline-variant rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Payments Pro BV</h1>
+<div class="flex gap-3 mt-1">
+<span class="font-label-md text-label-md px-2 py-0.5 rounded border border-outline-variant bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Amsterdam, NL
+                            </span>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded border border-outline-variant bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="payments">payments</span> FinTech
+                            </span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mt-8">
+<div class="bg-surface-container border border-outline-variant p-4 rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Sessions</p>
+<p class="font-headline-md text-headline-md text-primary">12</p>
+</div>
+<div class="bg-surface-container border border-outline-variant p-4 rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Questions</p>
+<p class="font-headline-md text-headline-md text-primary">47</p>
+</div>
+<div class="bg-surface-container border border-outline-variant p-4 rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Active Gaps</p>
+<p class="font-headline-md text-headline-md text-error">3</p>
+</div>
+</div>
+</div>
+<!-- Compliance Score Gauge -->
+<div class="bg-surface-container border border-outline-variant p-8 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-on-surface-variant opacity-30 text-6xl" data-icon="verified_user">verified_user</span>
+</div>
+<div class="relative w-48 h-48 rounded-full score-gradient flex items-center justify-center">
+<div class="absolute inset-4 bg-surface-container rounded-full flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-on-surface">67</span>
+<span class="font-label-md text-label-md text-on-surface-variant">COMPLIANCE SCORE</span>
+</div>
+</div>
+<p class="mt-6 font-body-sm text-body-sm text-center text-on-surface-variant max-w-[200px]">
+                    Your score has increased by <span class="text-primary font-bold">+12%</span> since last month.
+                </p>
+</div>
+</section>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Compliance Gaps (Left/Main column) -->
+<div class="xl:col-span-8 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-title-lg text-title-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+                        Critical Compliance Gaps
+                    </h2>
+<button class="font-label-md text-label-md text-primary hover:underline">View All Gaps</button>
+</div>
+<!-- Card 1: Critical -->
+<div class="bg-surface-container border-l-4 border-error border-y border-r border-outline-variant p-6 rounded-r-lg group hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-error/10 text-error border border-error px-2 py-0.5 rounded font-label-md text-label-md uppercase">Critical</span>
+<span class="font-label-md text-label-md text-on-surface-variant py-0.5">DORA Article 28</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-2">No ICT third-party risk register</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        Failure to maintain a comprehensive register of all information and communication technology (ICT) third-party service providers as required by DORA.
+                    </p>
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+<div>
+<p class="font-label-md text-label-md text-primary uppercase">Recommended Action</p>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold">Register all cloud providers and critical infrastructure partners.</p>
+</div>
+<button class="ml-auto bg-surface-variant px-4 py-2 rounded font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Execute</button>
+</div>
+</div>
+<!-- Card 2: Amber -->
+<div class="bg-surface-container border-l-4 border-tertiary-container border-y border-r border-outline-variant p-6 rounded-r-lg group hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-tertiary-container/10 text-tertiary-container border border-tertiary-container px-2 py-0.5 rounded font-label-md text-label-md uppercase">Medium</span>
+<span class="font-label-md text-label-md text-on-surface-variant py-0.5">NIS2 Article 21</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-2">Incident response plan undocumented</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Operational procedures for cybersecurity incident response have not been formally codified or approved by the management body.
+                    </p>
+</div>
+<!-- Card 3: Amber -->
+<div class="bg-surface-container border-l-4 border-tertiary-container border-y border-r border-outline-variant p-6 rounded-r-lg group hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-tertiary-container/10 text-tertiary-container border border-tertiary-container px-2 py-0.5 rounded font-label-md text-label-md uppercase">Medium</span>
+<span class="font-label-md text-label-md text-on-surface-variant py-0.5">GDPR Article 30</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-2">Records of processing incomplete</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Data processing activities for 'Marketing Analytics' and 'Customer Retention' modules are currently missing required retention period data.
+                    </p>
+</div>
+<!-- History Timeline -->
+<div class="pt-8">
+<h2 class="font-title-lg text-title-lg text-on-surface mb-6">Session History</h2>
+<div class="relative border-l border-outline-variant ml-3 space-y-8">
+<div class="relative pl-8">
+<div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary glow-dot"></div>
+<p class="font-label-md text-label-md text-on-surface-variant">Oct 24, 2024</p>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">DORA ICT Risk Assessment</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Queried: Article 28, Article 30. Regulatory focus: Third-party dependencies.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<p class="font-label-md text-label-md text-on-surface-variant">Oct 12, 2024</p>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">NIS2 Readiness Check</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Queried: Incident management, supply chain security.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<p class="font-label-md text-label-md text-on-surface-variant">Sep 28, 2024</p>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">GDPR Annual Audit</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Queried: Data Subject Access Requests (DSAR) automation.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar (Right column) -->
+<aside class="xl:col-span-4 space-y-6">
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-6">Suggested Next Questions</h3>
+<div class="space-y-4">
+<button class="w-full text-left p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary transition-all group">
+<div class="flex justify-between items-center mb-2">
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded font-label-md text-label-md">98% Match</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Does our current AWS setup meet DORA data residency requirements?</p>
+</button>
+<button class="w-full text-left p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary transition-all group">
+<div class="flex justify-between items-center mb-2">
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded font-label-md text-label-md">84% Match</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">What NIS2 reporting timelines apply to Dutch financial entities?</p>
+</button>
+<button class="w-full text-left p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary transition-all group">
+<div class="flex justify-between items-center mb-2">
+<span class="bg-tertiary-container/10 text-tertiary-container px-2 py-0.5 rounded font-label-md text-label-md">71% Match</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Are our international data transfers under SCCs still valid under NIS2?</p>
+</button>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-2">Live Intelligence</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">New EBA guidelines released 4h ago regarding crypto-asset payments.</p>
+<button class="w-full py-2 border border-primary text-primary rounded font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Analyze Impact</button>
+</div>
+<span class="absolute top-[-10px] right-[-10px] material-symbols-outlined text-8xl text-primary opacity-5 rotate-12" data-icon="hub">hub</span>
+</div>
+<!-- Insights Image -->
+<div class="rounded-xl overflow-hidden border border-outline-variant h-48 relative">
+<img alt="Compliance Data Visualization" class="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700" data-alt="A sophisticated data visualization dashboard showing complex network nodes and regulatory interconnectivity. The style is dark and technical, featuring neon emerald and electric blue lines on a deep navy background. Soft bokeh effects and high-fidelity UI elements create a sense of advanced intelligence and corporate precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpESelcrj8C1ltXnSVYP-05rOwUGSp9xYRtBN_p9hIe1hELm2WlLiaoqh37UwpIsMRupkufE3MhwzhpSdbtOjpG5jbrQccTZ3Dtdq90b3Ut65SiJ-dSUgK7deHjBnNXDL-KhURgcKvq6W9ZetF1VNjOR9N4YQi6hIVZ-C20j4ZiU5LolgHdFy8NOOGdAvUS7-lN0UQP5yVjz7sk7JL8RmMIWJQvFprfBGS4TCAlb7gYdqAqse_IoVoxkK2j8R8XBPeHh3Nc2g-Tw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent flex items-end p-6">
+<p class="font-label-md text-label-md text-on-surface">Jurisdictional Heatmap: EU Active</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-outline-variant bg-surface-container-lowest">
+<div class="w-full py-8 px-grid-margin flex flex-col md:flex-row justify-between items-center max-w-container-max-width mx-auto gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="font-label-md text-label-md font-bold text-on-surface-variant">RegQuery</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 RegQuery. Powered by MongoDB Atlas Vector Search.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance API</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple interaction for confidence indicators
+        document.querySelectorAll('button[class*="group"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.querySelector('p').innerText;
+                console.log('Initiating research for:', text);
+                btn.classList.add('animate-pulse');
+                setTimeout(() => btn.classList.remove('animate-pulse'), 1000);
+            });
+        });
+
+        // Atmospheric effect: subtle mouse move gradient
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth * 100;
+            const y = e.clientY / window.innerHeight * 100;
+            document.body.style.backgroundImage = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 237, 100, 0.03) 0%, transparent 40%)`;
+        });
+    </script>
+</body></html>

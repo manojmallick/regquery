@@ -1,0 +1,56 @@
+{
+  "ran_at": "2026-06-11T01:40:00.268Z",
+  "mode": "live",
+  "target": 0.8,
+  "total": 6,
+  "correct": 6,
+  "accuracy": 1,
+  "rows": [
+    {
+      "q": "What is the DORA major-incident reporting timeline and",
+      "type": "answer",
+      "ok": true,
+      "artRecall": 1,
+      "kwRecall": 0.6666666666666666,
+      "detail": "articles 100% · keywords 67%"
+    },
+    {
+      "q": "What was the DORA major-incident threshold and timelin",
+      "type": "answer",
+      "ok": true,
+      "artRecall": 1,
+      "kwRecall": 1,
+      "detail": "articles 100% · keywords 100%"
+    },
+    {
+      "q": "Under GDPR, what is the personal-data breach notificat",
+      "type": "answer",
+      "ok": true,
+      "artRecall": 1,
+      "kwRecall": 1,
+      "detail": "articles 100% · keywords 100%"
+    },
+    {
+      "q": "Does DORA require an ICT third-party risk register, an",
+      "type": "answer",
+      "ok": true,
+      "artRecall": 1,
+      "kwRecall": 1,
+      "detail": "articles 100% · keywords 100%"
+    },
+    {
+      "q": "What is the NIS2 incident notification timeline for es",
+      "type": "answer",
+      "ok": true,
+      "artRecall": 1,
+      "kwRecall": 1,
+      "detail": "articles 100% · keywords 100%"
+    },
+    {
+      "q": "What is the maximum carbon tax rate for almond farming",
+      "type": "abstain",
+      "ok": true,
+      "detail": "correctly abstained"
+    }
+  ]
+}
