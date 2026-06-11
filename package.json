@@ -1,5 +1,5 @@
 {
-  "name": "regquery",
+  "name": "regquery-starter",
   "version": "1.0.0",
   "description": "RegQuery — EU regulatory Q&A agent. Gemini 3 + Google Cloud Agent Builder + MongoDB Atlas Vector Search (MCP).",
   "type": "module",
