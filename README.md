@@ -109,7 +109,32 @@ npm start
 bash scripts/golive.sh
 ```
 
-See **[.env.example](.env.example)** for all config (model, region, abstention threshold).
+### Configuration
+
+Copy `.env.example` to `.env`. The model client picks its auth path automatically: **AI Studio** when `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) is set, otherwise **Vertex AI** with Google Cloud application-default credentials.
+
+| Variable | Default | Meaning |
+|---|---|---|
+| `GEMINI_API_KEY` | none | Use the Gemini Developer API (AI Studio). Not listed in `.env.example`; add it if you use this path |
+| `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION` | none, `europe-west1` | Vertex AI project and region, used when no API key is set |
+| `GOOGLE_GENAI_USE_VERTEXAI` | `true` | Prefer Vertex. Ignored when an API key is set |
+| `GEMINI_MODEL` | `gemini-3` | Model for answer synthesis |
+| `EMBEDDING_MODEL` | `text-embedding-004` | Model for embeddings |
+| `ATLAS_CONNECTION_STRING` | none | MongoDB Atlas connection string (required unless `MOCK=true`) |
+| `ATLAS_DB`, `ATLAS_COLLECTION`, `ATLAS_VECTOR_INDEX` | `regquery`, `regulations`, `regulatory_vector_index` | Database, collection and Atlas vector index names |
+| `ABSTAIN_THRESHOLD` | `0.6` | If the top hit's similarity is below this (0 to 1), RegQuery refuses to answer and escalates to a human. Raise it for stricter, lower it for chattier |
+| `MOCK` | off | `true` runs the whole UI and approval flow with canned data and no credentials |
+| `PORT` | `8080` | HTTP port |
+| `EVAL_TARGET` | `0.8` | Pass mark used by `npm run eval` |
+
+### Scripts
+
+| Command | What it does |
+|---|---|
+| `npm start` | Start the server |
+| `npm run dev` | Start with `node --watch` (restarts on file changes) |
+| `npm run ingest` | Embed the corpus and index it into Atlas |
+| `npm run eval` | Run the golden Q&A evaluation in `evals/golden-qa.json` and write `evals/report.json` |
 
 ---
 
